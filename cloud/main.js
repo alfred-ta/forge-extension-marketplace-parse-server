@@ -1743,7 +1743,18 @@ const activateDeveloper = async(siteId, userId, developerId) => {
 }
 
 
-// Related with Mural Auth
+Parse.Cloud.define('getDevelopersList', async(request) => {
+  try {
+    const { parseServerSiteId, verified } = request.params;
+    const developersList = await getDevelopersList(parseServerSiteId, verified);
+    return { status: 'success', developersList };
+  } catch (error) {
+    console.error('Error in getDevelopersList', error);
+    return { status: 'error', error };
+  }
+});
+
+// LEGACY code
 Parse.Cloud.define('developersList', async(request) => {
   try {
     const { siteId, verified } = request.params;
