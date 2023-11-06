@@ -1304,6 +1304,8 @@ const getDeveloperAppById = async(siteId, appId) => {
       name: appObject.get('Name'),
       slug: appObject.get('Slug'),
       url: appObject.get('URL'),
+      devURL: appObject.get('Dev_URL'),
+      devMode: appObject.get('Dev_Mode'),
       developer,
       developerContent,
       developerData,
